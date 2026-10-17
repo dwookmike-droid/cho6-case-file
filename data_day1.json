@@ -1,0 +1,196 @@
+{
+ "day": 1,
+ "title": "정글북: 모글리는 왜 늑대 무리에 남았나",
+ "intro": [
+  "어느 밤, 늑대 가족의 집에 사람 아기가 걸어 들어왔어요.",
+  "호랑이 쉬어칸은 그 아기를 내놓으라고 해요.",
+  "모글리는 어떻게 늑대 무리에 남을 수 있었을까요?"
+ ],
+ "img": [
+  "img/d1_a.jpg",
+  "img/d1_b.jpg"
+ ],
+ "img_after": [
+  0,
+  4
+ ],
+ "sentences": [
+  {
+   "seg": 0,
+   "speaker": "narrator",
+   "text": "One night, a human baby walked into a wolf family's home.",
+   "src": "audio/d1_01_01.mp3"
+  },
+  {
+   "seg": 0,
+   "speaker": "narrator",
+   "text": "He laughed.",
+   "src": "audio/d1_01_02.mp3"
+  },
+  {
+   "seg": 0,
+   "speaker": "narrator",
+   "text": "What a brave baby!",
+   "src": "audio/d1_01_03.mp3"
+  },
+  {
+   "seg": 0,
+   "speaker": "narrator",
+   "text": "Then a huge head filled the door.",
+   "src": "audio/d1_01_04.mp3"
+  },
+  {
+   "seg": 0,
+   "speaker": "narrator",
+   "text": "It was Shere Khan, the tiger.",
+   "src": "audio/d1_01_05.mp3"
+  },
+  {
+   "seg": 1,
+   "speaker": "Shere Khan",
+   "text": "\"That baby is mine.",
+   "src": "audio/d1_02_01.mp3"
+  },
+  {
+   "seg": 1,
+   "speaker": "Shere Khan",
+   "text": "Give him to me!\"",
+   "src": "audio/d1_02_02.mp3"
+  },
+  {
+   "seg": 2,
+   "speaker": "narrator",
+   "text": "Mother Wolf jumped up:",
+   "src": "audio/d1_03_01.mp3"
+  },
+  {
+   "seg": 3,
+   "speaker": "Mother Wolf",
+   "text": "\"No!",
+   "src": "audio/d1_04_01.mp3"
+  },
+  {
+   "seg": 3,
+   "speaker": "Mother Wolf",
+   "text": "He is mine now.",
+   "src": "audio/d1_04_02.mp3"
+  },
+  {
+   "seg": 3,
+   "speaker": "Mother Wolf",
+   "text": "Go away!\"",
+   "src": "audio/d1_04_03.mp3"
+  },
+  {
+   "seg": 4,
+   "speaker": "narrator",
+   "text": "The door was too small for the tiger, so he left.",
+   "src": "audio/d1_05_01.mp3"
+  },
+  {
+   "seg": 4,
+   "speaker": "narrator",
+   "text": "Mother Wolf named the boy Mowgli, the little frog, and protected him.",
+   "src": "audio/d1_05_02.mp3"
+  },
+  {
+   "seg": 4,
+   "speaker": "narrator",
+   "text": "But the law said two animals had to speak for him at the Council Rock.",
+   "src": "audio/d1_05_03.mp3"
+  },
+  {
+   "seg": 4,
+   "speaker": "narrator",
+   "text": "Baloo the bear spoke first.",
+   "src": "audio/d1_05_04.mp3"
+  },
+  {
+   "seg": 4,
+   "speaker": "narrator",
+   "text": "Then Bagheera the black panther paid a price:",
+   "src": "audio/d1_05_05.mp3"
+  },
+  {
+   "seg": 4,
+   "speaker": "narrator",
+   "text": "a fat bull.",
+   "src": "audio/d1_05_06.mp3"
+  },
+  {
+   "seg": 4,
+   "speaker": "narrator",
+   "text": "So Mowgli became one of the wolves.",
+   "src": "audio/d1_05_07.mp3"
+  },
+  {
+   "seg": 4,
+   "speaker": "narrator",
+   "text": "But in the dark, Shere Khan was still shouting.",
+   "src": "audio/d1_05_08.mp3"
+  }
+ ],
+ "gloss": {
+  "wolf": "늑대",
+  "wolves": "늑대들",
+  "panther": "흑표범",
+  "bull": "황소"
+ },
+ "clue_words": [
+  {
+   "word": "brave",
+   "뜻": "용감한",
+   "예문": "What a brave baby! (정말 용감한 아기야!)"
+  },
+  {
+   "word": "tiger",
+   "뜻": "호랑이",
+   "예문": "The tiger wanted the baby. (호랑이는 그 아기를 원했다.)"
+  },
+  {
+   "word": "protect",
+   "뜻": "지키다, 보호하다",
+   "예문": "Mother Wolf protected him. (엄마 늑대가 그를 지켰다.)"
+  },
+  {
+   "word": "law",
+   "뜻": "법, 규칙",
+   "예문": "The law said two animals had to speak for him. (법에 따르면 동물 둘이 그의 편을 들어야 했다.)"
+  },
+  {
+   "word": "price",
+   "뜻": "값, 대가",
+   "예문": "Bagheera paid a price: a fat bull. (바기라는 값을 치렀다. 살찐 황소 한 마리였다.)"
+  }
+ ],
+ "record_lines": [
+  {
+   "speaker": "Shere Khan",
+   "line": "That baby is mine. Give him to me!",
+   "연기_팁": "배에 힘을 주고 낮고 느리게. 잘난 척하는 호랑이처럼 말끝을 길게 끌어 보세요."
+  },
+  {
+   "speaker": "Mother Wolf",
+   "line": "No! He is mine now. Go away!",
+   "연기_팁": "'No!'는 짧고 세게. 아기를 등 뒤에 숨긴다고 생각하고 단호하게 말해요."
+  }
+ ],
+ "questions": [
+  {
+   "type": "4지선다",
+   "문제": "모글리가 늑대 무리에 남을 수 있었던 '값(price)'은 무엇이었을까요?",
+   "보기": [
+    "① 달콤한 꿀 한 통",
+    "② 살찐 황소 한 마리",
+    "③ 붉은 꽃(불) 한 항아리",
+    "④ 커다란 사슴 한 마리"
+   ],
+   "정답": "②",
+   "해설": "발루가 먼저 모글리 편을 들었고, 바기라가 황소 한 마리를 값으로 냈어요. 엄마 늑대가 지켜 주고 법에 맞게 값까지 치렀으니, 늑대들도 모글리를 받아들였어요."
+  }
+ ],
+ "cliffhanger": "늑대 무리에 들어간 첫날 밤, 어둠 속에서 쉬어칸이 아직도 소리를 지르고 있었다.",
+ "badge": "늑대 무리 신입 배지",
+ "teaser_img": "img/d1_c.jpg",
+ "next_title": "정글북: 쉬어칸의 함정"
+}

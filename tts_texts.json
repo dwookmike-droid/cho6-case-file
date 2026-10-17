@@ -1,0 +1,37 @@
+[
+ {
+  "day": 1,
+  "seg": 0,
+  "speaker": "narrator",
+  "voice_style": "Warm and curious, like opening an old storybook at night",
+  "text": "One night, a human baby walked into a wolf family's home. He laughed. What a brave baby! Then a huge head filled the door. It was Shere Khan, the tiger. "
+ },
+ {
+  "day": 1,
+  "seg": 1,
+  "speaker": "Shere Khan",
+  "voice_style": "Deep, grumpy voice of a proud tiger, slow and loud",
+  "text": "\"That baby is mine. Give him to me!\" "
+ },
+ {
+  "day": 1,
+  "seg": 2,
+  "speaker": "narrator",
+  "voice_style": "Quick, the mother springs into action",
+  "text": "Mother Wolf jumped up: "
+ },
+ {
+  "day": 1,
+  "seg": 3,
+  "speaker": "Mother Wolf",
+  "voice_style": "Strong and protective, every word firm",
+  "text": "\"No! He is mine now. Go away!\" "
+ },
+ {
+  "day": 1,
+  "seg": 4,
+  "speaker": "narrator",
+  "voice_style": "Steady storyteller voice, a little mysterious at the Council Rock",
+  "text": "The door was too small for the tiger, so he left. Mother Wolf named the boy Mowgli, the little frog, and protected him. But the law said two animals had to speak for him at the Council Rock. Baloo the bear spoke first. Then Bagheera the black panther paid a price: a fat bull. So Mowgli became one of the wolves. But in the dark, Shere Khan was still shouting."
+ }
+]
