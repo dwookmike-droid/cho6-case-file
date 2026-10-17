@@ -54,7 +54,7 @@ function check(kind){var W=K.word_check.items,ans={},i=0,done=st[kind];
 function list(){var h='<h1>'+esc(st.learner.name)+' 탐정의 사건 목록</h1>'+(teacher?'<p class="acc sub">선생님 모드: 모든 날이 열려 있어요.</p>':'')+'<ul class="days">';
  K.titles.forEach(function(t,j){var n=j+1,o=open(n)&&DAYS[n],d=st.days[n]&&st.days[n].done;h+='<li class="'+(o?'':'lock')+'"><span>'+n+'일 차 · '+esc(t)+'</span><span>'+(d?'완료':o?'<a class="acc" href="#/day/'+n+'">열기</a>':(DAYS[n]?'잠김':'준비 중'))+'</span></li>'});
  h+='</ul>';var all=[1,2,3,4,5].every(function(n){return st.days[n]&&st.days[n].done});
- if(all||teacher)h+='<button class="main" id="b">끝난 뒤 단어 점검</button>';h+='<p class="sub" style="margin-top:24px"><a href="#/report">학부모 리포트 보기</a></p>';
+ if(all||teacher)h+='<button class="main" id="b">끝난 뒤 단어 점검</button>';h+='<p class="sub" style="margin-top:24px"><a href="#/report">학부모 리포트 보기</a>'+(teacher?' · <a href="teacher.html">학생 기록 보기 (선생님 계정 로그인)</a>':'')+'</p>';
  app.innerHTML=h;if($('#b'))$('#b').onclick=function(){go('#/post')}}
 // ---------- 하루 사건 ----------
 var audio=new Audio(),playing=null;
