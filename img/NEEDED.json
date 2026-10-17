@@ -1,0 +1,202 @@
+{
+ "style": "Picture-book illustration, ink and pencil line art on off-white paper (#f6f4f0), mostly grayscale with a single muted reddish-brown accent (#8B3A2B), gentle and friendly for 12-year-olds, not scary, simple shapes, soft cross-hatching, no text, no letters, no logos. ",
+ "note": "파일 이름 그대로 img/ 에 넣으면 앱이 자동으로 바꿔 씁니다. 그림이 없는 동안에는 같은 이름의 .svg 임시본이 보입니다.",
+ "items": [
+  {
+   "file": "img/p_mowgli.jpg",
+   "aspect": "1:1",
+   "size": "768x768",
+   "used_in": "1·2일 차",
+   "prompt": "Picture-book illustration, ink and pencil line art on off-white paper (#f6f4f0), mostly grayscale with a single muted reddish-brown accent (#8B3A2B), gentle and friendly for 12-year-olds, not scary, simple shapes, soft cross-hatching, no text, no letters, no logos. Square character portrait, head and shoulders, plain off-white background, centered, readable at small size. a young Indian jungle boy about ten years old with messy black hair, bare feet and a curious smile; tiny reddish-brown leaf necklace"
+  },
+  {
+   "file": "img/p_motherwolf.jpg",
+   "aspect": "1:1",
+   "size": "768x768",
+   "used_in": "1일 차",
+   "prompt": "Picture-book illustration, ink and pencil line art on off-white paper (#f6f4f0), mostly grayscale with a single muted reddish-brown accent (#8B3A2B), gentle and friendly for 12-year-olds, not scary, simple shapes, soft cross-hatching, no text, no letters, no logos. Square character portrait, head and shoulders, plain off-white background, centered, readable at small size. a brave, protective gray mother wolf with kind but fierce eyes; reddish-brown accent in her eyes"
+  },
+  {
+   "file": "img/p_sherekhan.jpg",
+   "aspect": "1:1",
+   "size": "768x768",
+   "used_in": "1·2일 차",
+   "prompt": "Picture-book illustration, ink and pencil line art on off-white paper (#f6f4f0), mostly grayscale with a single muted reddish-brown accent (#8B3A2B), gentle and friendly for 12-year-olds, not scary, simple shapes, soft cross-hatching, no text, no letters, no logos. Square character portrait, head and shoulders, plain off-white background, centered, readable at small size. a proud, grumpy Bengal tiger with a limp hinted by a slightly lowered shoulder, stripes in gray ink, eyes in reddish-brown; grumpy rather than frightening"
+  },
+  {
+   "file": "img/p_baloo.jpg",
+   "aspect": "1:1",
+   "size": "768x768",
+   "used_in": "1일 차 체크포인트",
+   "prompt": "Picture-book illustration, ink and pencil line art on off-white paper (#f6f4f0), mostly grayscale with a single muted reddish-brown accent (#8B3A2B), gentle and friendly for 12-year-olds, not scary, simple shapes, soft cross-hatching, no text, no letters, no logos. Square character portrait, head and shoulders, plain off-white background, centered, readable at small size. a big, sleepy, gentle brown bear (drawn in gray ink) who is a teacher, half-closed eyes, warm smile"
+  },
+  {
+   "file": "img/p_bagheera.jpg",
+   "aspect": "1:1",
+   "size": "768x768",
+   "used_in": "1·2일 차",
+   "prompt": "Picture-book illustration, ink and pencil line art on off-white paper (#f6f4f0), mostly grayscale with a single muted reddish-brown accent (#8B3A2B), gentle and friendly for 12-year-olds, not scary, simple shapes, soft cross-hatching, no text, no letters, no logos. Square character portrait, head and shoulders, plain off-white background, centered, readable at small size. a sleek black panther with clever calm eyes, drawn in dark gray ink, reddish-brown eyes"
+  },
+  {
+   "file": "img/p_akela.jpg",
+   "aspect": "1:1",
+   "size": "768x768",
+   "used_in": "2일 차",
+   "prompt": "Picture-book illustration, ink and pencil line art on off-white paper (#f6f4f0), mostly grayscale with a single muted reddish-brown accent (#8B3A2B), gentle and friendly for 12-year-olds, not scary, simple shapes, soft cross-hatching, no text, no letters, no logos. Square character portrait, head and shoulders, plain off-white background, centered, readable at small size. a large old gray lone wolf, leader of the pack, wise but tired, some white fur around the muzzle"
+  },
+  {
+   "file": "img/p_ichabod.jpg",
+   "aspect": "1:1",
+   "size": "768x768",
+   "used_in": "3일 차",
+   "prompt": "Picture-book illustration, ink and pencil line art on off-white paper (#f6f4f0), mostly grayscale with a single muted reddish-brown accent (#8B3A2B), gentle and friendly for 12-year-olds, not scary, simple shapes, soft cross-hatching, no text, no letters, no logos. Square character portrait, head and shoulders, plain off-white background, centered, readable at small size. Ichabod Crane, a very tall, thin, nervous 18th-century American country schoolteacher with a long nose, big ears, and a reddish-brown neckcloth; comic, not mocking"
+  },
+  {
+   "file": "img/p_brom.jpg",
+   "aspect": "1:1",
+   "size": "768x768",
+   "used_in": "3일 차",
+   "prompt": "Picture-book illustration, ink and pencil line art on off-white paper (#f6f4f0), mostly grayscale with a single muted reddish-brown accent (#8B3A2B), gentle and friendly for 12-year-olds, not scary, simple shapes, soft cross-hatching, no text, no letters, no logos. Square character portrait, head and shoulders, plain off-white background, centered, readable at small size. Brom Bones, a broad-shouldered, cheerful, mischievous young Dutch-American farmer in 18th-century clothes with curly hair and a fur cap, grinning playfully"
+  },
+  {
+   "file": "img/p_katrina.jpg",
+   "aspect": "1:1",
+   "size": "768x768",
+   "used_in": "3일 차",
+   "prompt": "Picture-book illustration, ink and pencil line art on off-white paper (#f6f4f0), mostly grayscale with a single muted reddish-brown accent (#8B3A2B), gentle and friendly for 12-year-olds, not scary, simple shapes, soft cross-hatching, no text, no letters, no logos. Square character portrait, head and shoulders, plain off-white background, centered, readable at small size. Katrina Van Tassel, a cheerful rosy-cheeked young woman, daughter of a rich Dutch farmer, 18th-century dress and a reddish-brown ribbon"
+  },
+  {
+   "file": "img/p_horseman.jpg",
+   "aspect": "1:1",
+   "size": "768x768",
+   "used_in": "3일 차 체크포인트",
+   "prompt": "Picture-book illustration, ink and pencil line art on off-white paper (#f6f4f0), mostly grayscale with a single muted reddish-brown accent (#8B3A2B), gentle and friendly for 12-year-olds, not scary, simple shapes, soft cross-hatching, no text, no letters, no logos. Square character portrait, head and shoulders, plain off-white background, centered, readable at small size. the Headless Horseman as a friendly-spooky storybook figure: a cloaked rider with no head, holding a round pumpkin-like shape under his arm; more mysterious than scary, soft lines"
+  },
+  {
+   "file": "img/p_wilson.jpg",
+   "aspect": "1:1",
+   "size": "768x768",
+   "used_in": "4일 차",
+   "prompt": "Picture-book illustration, ink and pencil line art on off-white paper (#f6f4f0), mostly grayscale with a single muted reddish-brown accent (#8B3A2B), gentle and friendly for 12-year-olds, not scary, simple shapes, soft cross-hatching, no text, no letters, no logos. Square character portrait, head and shoulders, plain off-white background, centered, readable at small size. Mr. Jabez Wilson, a stout, puzzled middle-aged London pawnbroker in a Victorian coat with bright flaming red hair (the only strong color, in reddish-brown)"
+  },
+  {
+   "file": "img/p_vincent.jpg",
+   "aspect": "1:1",
+   "size": "768x768",
+   "used_in": "4일 차",
+   "prompt": "Picture-book illustration, ink and pencil line art on off-white paper (#f6f4f0), mostly grayscale with a single muted reddish-brown accent (#8B3A2B), gentle and friendly for 12-year-olds, not scary, simple shapes, soft cross-hatching, no text, no letters, no logos. Square character portrait, head and shoulders, plain off-white background, centered, readable at small size. Vincent, a smooth-faced, clean-shaven young shop assistant in Victorian clothes with a quick, clever look; his trouser knees are worn and dusty (subtle)"
+  },
+  {
+   "file": "img/p_holmes.jpg",
+   "aspect": "1:1",
+   "size": "768x768",
+   "used_in": "4·5일 차",
+   "prompt": "Picture-book illustration, ink and pencil line art on off-white paper (#f6f4f0), mostly grayscale with a single muted reddish-brown accent (#8B3A2B), gentle and friendly for 12-year-olds, not scary, simple shapes, soft cross-hatching, no text, no letters, no logos. Square character portrait, head and shoulders, plain off-white background, centered, readable at small size. Sherlock Holmes, a lean Victorian detective with a sharp nose and calm thinking eyes, wearing a coat; reddish-brown scarf accent"
+  },
+  {
+   "file": "img/p_watson.jpg",
+   "aspect": "1:1",
+   "size": "768x768",
+   "used_in": "4·5일 차",
+   "prompt": "Picture-book illustration, ink and pencil line art on off-white paper (#f6f4f0), mostly grayscale with a single muted reddish-brown accent (#8B3A2B), gentle and friendly for 12-year-olds, not scary, simple shapes, soft cross-hatching, no text, no letters, no logos. Square character portrait, head and shoulders, plain off-white background, centered, readable at small size. Dr. Watson, a friendly Victorian doctor with a moustache, bowler hat and a doctor's kind expression"
+  },
+  {
+   "file": "img/p_merryweather.jpg",
+   "aspect": "1:1",
+   "size": "768x768",
+   "used_in": "5일 차",
+   "prompt": "Picture-book illustration, ink and pencil line art on off-white paper (#f6f4f0), mostly grayscale with a single muted reddish-brown accent (#8B3A2B), gentle and friendly for 12-year-olds, not scary, simple shapes, soft cross-hatching, no text, no letters, no logos. Square character portrait, head and shoulders, plain off-white background, centered, readable at small size. Mr. Merryweather, a tall, serious, worried Victorian bank director in a top hat and long coat"
+  },
+  {
+   "file": "img/d2_a.jpg",
+   "aspect": "16:9",
+   "size": "1280x720",
+   "used_in": "2일 차 표지·이야기",
+   "prompt": "Picture-book illustration, ink and pencil line art on off-white paper (#f6f4f0), mostly grayscale with a single muted reddish-brown accent (#8B3A2B), gentle and friendly for 12-year-olds, not scary, simple shapes, soft cross-hatching, no text, no letters, no logos. Ten years later: an old tired gray wolf leader sits on a rock while a group of young wolves walk away following a sly tiger into the trees; a strong young boy watches"
+  },
+  {
+   "file": "img/d2_b.jpg",
+   "aspect": "16:9",
+   "size": "1280x720",
+   "used_in": "2일 차 이야기",
+   "prompt": "Picture-book illustration, ink and pencil line art on off-white paper (#f6f4f0), mostly grayscale with a single muted reddish-brown accent (#8B3A2B), gentle and friendly for 12-year-olds, not scary, simple shapes, soft cross-hatching, no text, no letters, no logos. At night, a jungle boy runs down a hill toward a small village of huts, carrying a small clay pot glowing with fire (fire glow in reddish-brown)"
+  },
+  {
+   "file": "img/d2_c.jpg",
+   "aspect": "16:9",
+   "size": "1280x720",
+   "used_in": "2일 차 예고",
+   "prompt": "Picture-book illustration, ink and pencil line art on off-white paper (#f6f4f0), mostly grayscale with a single muted reddish-brown accent (#8B3A2B), gentle and friendly for 12-year-olds, not scary, simple shapes, soft cross-hatching, no text, no letters, no logos. Teaser: at the Council Rock under the night sky, a boy stands up holding a small glowing fire pot in front of a tiger and a circle of wolves; tense but not violent"
+  },
+  {
+   "file": "img/d3_a.jpg",
+   "aspect": "16:9",
+   "size": "1280x720",
+   "used_in": "3일 차 표지·이야기",
+   "prompt": "Picture-book illustration, ink and pencil line art on off-white paper (#f6f4f0), mostly grayscale with a single muted reddish-brown accent (#8B3A2B), gentle and friendly for 12-year-olds, not scary, simple shapes, soft cross-hatching, no text, no letters, no logos. A cozy autumn harvest party in an 18th-century American farmhouse; people sit by candlelight telling ghost stories; a tall thin teacher and a strong young man both look at a young woman"
+  },
+  {
+   "file": "img/d3_b.jpg",
+   "aspect": "16:9",
+   "size": "1280x720",
+   "used_in": "3일 차 이야기",
+   "prompt": "Picture-book illustration, ink and pencil line art on off-white paper (#f6f4f0), mostly grayscale with a single muted reddish-brown accent (#8B3A2B), gentle and friendly for 12-year-olds, not scary, simple shapes, soft cross-hatching, no text, no letters, no logos. Moonlit country road: a tall thin man on a skinny horse rides fast toward a small wooden church bridge, followed by a cloaked headless rider on a big black horse; storybook-mysterious, not frightening"
+  },
+  {
+   "file": "img/d3_c.jpg",
+   "aspect": "16:9",
+   "size": "1280x720",
+   "used_in": "3일 차 예고",
+   "prompt": "Picture-book illustration, ink and pencil line art on off-white paper (#f6f4f0), mostly grayscale with a single muted reddish-brown accent (#8B3A2B), gentle and friendly for 12-year-olds, not scary, simple shapes, soft cross-hatching, no text, no letters, no logos. Teaser, quiet morning: a hat lying on the grass near a small wooden bridge next to a broken pumpkin (pumpkin in reddish-brown); no people"
+  },
+  {
+   "file": "img/d4_a.jpg",
+   "aspect": "16:9",
+   "size": "1280x720",
+   "used_in": "4일 차 표지·이야기",
+   "prompt": "Picture-book illustration, ink and pencil line art on off-white paper (#f6f4f0), mostly grayscale with a single muted reddish-brown accent (#8B3A2B), gentle and friendly for 12-year-olds, not scary, simple shapes, soft cross-hatching, no text, no letters, no logos. A Victorian London office: a red-haired man sits at a desk copying a huge book by hand with a quill pen; a clock on the wall shows ten o'clock"
+  },
+  {
+   "file": "img/d4_b.jpg",
+   "aspect": "16:9",
+   "size": "1280x720",
+   "used_in": "4일 차 이야기",
+   "prompt": "Picture-book illustration, ink and pencil line art on off-white paper (#f6f4f0), mostly grayscale with a single muted reddish-brown accent (#8B3A2B), gentle and friendly for 12-year-olds, not scary, simple shapes, soft cross-hatching, no text, no letters, no logos. A closed office door in a Victorian building, locked, with a small blank white card pinned to it (the card has NO writing); a puzzled red-haired man stands in front of it"
+  },
+  {
+   "file": "img/d4_c.jpg",
+   "aspect": "16:9",
+   "size": "1280x720",
+   "used_in": "4일 차 이야기",
+   "prompt": "Picture-book illustration, ink and pencil line art on off-white paper (#f6f4f0), mostly grayscale with a single muted reddish-brown accent (#8B3A2B), gentle and friendly for 12-year-olds, not scary, simple shapes, soft cross-hatching, no text, no letters, no logos. A London street: a lean detective taps the pavement with a walking stick in front of a small pawnshop, while around the corner a big stone bank building stands"
+  },
+  {
+   "file": "img/d4_d.jpg",
+   "aspect": "16:9",
+   "size": "1280x720",
+   "used_in": "4일 차 예고",
+   "prompt": "Picture-book illustration, ink and pencil line art on off-white paper (#f6f4f0), mostly grayscale with a single muted reddish-brown accent (#8B3A2B), gentle and friendly for 12-year-olds, not scary, simple shapes, soft cross-hatching, no text, no letters, no logos. Teaser: night in Victorian London, a detective and his friend walk under a gas lamp toward a dark bank building; mysterious"
+  },
+  {
+   "file": "img/d5_a.jpg",
+   "aspect": "16:9",
+   "size": "1280x720",
+   "used_in": "5일 차 표지·이야기",
+   "prompt": "Picture-book illustration, ink and pencil line art on off-white paper (#f6f4f0), mostly grayscale with a single muted reddish-brown accent (#8B3A2B), gentle and friendly for 12-year-olds, not scary, simple shapes, soft cross-hatching, no text, no letters, no logos. That night: four men (a detective, a doctor, a police officer, a bank man) stand with one lantern in a big dark stone cellar full of wooden boxes"
+  },
+  {
+   "file": "img/d5_b.jpg",
+   "aspect": "16:9",
+   "size": "1280x720",
+   "used_in": "5일 차 이야기",
+   "prompt": "Picture-book illustration, ink and pencil line art on off-white paper (#f6f4f0), mostly grayscale with a single muted reddish-brown accent (#8B3A2B), gentle and friendly for 12-year-olds, not scary, simple shapes, soft cross-hatching, no text, no letters, no logos. In the dark cellar, a small glow appears in a crack of the stone floor and a pale hand comes up between the stones; the men wait in the shadows"
+  },
+  {
+   "file": "img/d5_c.jpg",
+   "aspect": "16:9",
+   "size": "1280x720",
+   "used_in": "5일 차 마무리",
+   "prompt": "Picture-book illustration, ink and pencil line art on off-white paper (#f6f4f0), mostly grayscale with a single muted reddish-brown accent (#8B3A2B), gentle and friendly for 12-year-olds, not scary, simple shapes, soft cross-hatching, no text, no letters, no logos. The reveal: a big floor stone is turned over, revealing a square hole; a young man's surprised face peeks out and a detective jumps forward to catch him; dramatic but gentle, no weapons"
+  }
+ ]
+}

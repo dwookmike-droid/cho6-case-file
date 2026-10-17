@@ -3,6 +3,7 @@
   "day": 1,
   "seg": 0,
   "speaker": "narrator",
+  "voice": "en-US-AndrewMultilingualNeural",
   "voice_style": "Warm and curious, like opening an old storybook at night",
   "text": "One night, a human baby walked into a wolf family's home. He laughed. What a brave baby! Then a huge head filled the door. It was Shere Khan, the tiger. "
  },
@@ -10,6 +11,7 @@
   "day": 1,
   "seg": 1,
   "speaker": "Shere Khan",
+  "voice": "en-US-ChristopherNeural",
   "voice_style": "Deep, grumpy voice of a proud tiger, slow and loud",
   "text": "\"That baby is mine. Give him to me!\" "
  },
@@ -17,6 +19,7 @@
   "day": 1,
   "seg": 2,
   "speaker": "narrator",
+  "voice": "en-US-AndrewMultilingualNeural",
   "voice_style": "Quick, the mother springs into action",
   "text": "Mother Wolf jumped up: "
  },
@@ -24,6 +27,7 @@
   "day": 1,
   "seg": 3,
   "speaker": "Mother Wolf",
+  "voice": "en-GB-SoniaNeural",
   "voice_style": "Strong and protective, every word firm",
   "text": "\"No! He is mine now. Go away!\" "
  },
@@ -31,7 +35,152 @@
   "day": 1,
   "seg": 4,
   "speaker": "narrator",
+  "voice": "en-US-AndrewMultilingualNeural",
   "voice_style": "Steady storyteller voice, a little mysterious at the Council Rock",
   "text": "The door was too small for the tiger, so he left. Mother Wolf named the boy Mowgli, the little frog, and protected him. But the law said two animals had to speak for him at the Council Rock. Baloo the bear spoke first. Then Bagheera the black panther paid a price: a fat bull. So Mowgli became one of the wolves. But in the dark, Shere Khan was still shouting."
+ },
+ {
+  "day": 2,
+  "seg": 0,
+  "speaker": "narrator",
+  "voice": "en-US-AndrewMultilingualNeural",
+  "voice_style": "Calm but serious, like a secret is coming",
+  "text": "Ten years later, Mowgli was a strong boy. But Akela, the leader of the wolves, was old and weak. Shere Khan made friends with the young wolves, and they followed him. "
+ },
+ {
+  "day": 2,
+  "seg": 1,
+  "speaker": "Bagheera",
+  "voice": "en-GB-RyanNeural",
+  "voice_style": "Soft, smooth panther voice, worried but wise",
+  "text": "\"Shere Khan is your enemy. When Akela misses a kill, the young wolves will turn against him and you. Get the Red Flower!\" "
+ },
+ {
+  "day": 2,
+  "seg": 2,
+  "speaker": "narrator",
+  "voice": "en-US-AndrewMultilingualNeural",
+  "voice_style": "Faster and faster, a chase in the night",
+  "text": "That night, the young wolves made Akela go after a big, strong animal. Akela missed! It was a trap. Mowgli ran down to a village and took a small pot of fire. Fire was the Red Flower. The wolves met at the Council Rock. Shere Khan walked among them. "
+ },
+ {
+  "day": 2,
+  "seg": 3,
+  "speaker": "Shere Khan",
+  "voice": "en-US-ChristopherNeural",
+  "voice_style": "Sly and smooth, sure that he will win",
+  "text": "\"The leader's place is open now, so I...\" "
+ },
+ {
+  "day": 2,
+  "seg": 4,
+  "speaker": "narrator",
+  "voice": "en-US-AndrewMultilingualNeural",
+  "voice_style": "Slow, quiet build-up, stop right on the last word",
+  "text": "Mowgli held the fire pot and stood up."
+ },
+ {
+  "day": 3,
+  "seg": 0,
+  "speaker": "narrator",
+  "voice": "en-US-AndrewMultilingualNeural",
+  "voice_style": "Cozy and spooky-fun, like a campfire story",
+  "text": "Ichabod Crane was a tall, thin teacher in Sleepy Hollow. He and strong Brom Bones both liked Katrina. At Katrina's autumn party, people told ghost stories. Brom laughed: "
+ },
+ {
+  "day": 3,
+  "seg": 1,
+  "speaker": "Brom Bones",
+  "voice": "en-US-EricNeural",
+  "voice_style": "Loud, proud and playful, like he loves showing off",
+  "text": "\"The Headless Horseman? I raced him once! He disappeared at the church bridge.\" "
+ },
+ {
+  "day": 3,
+  "seg": 2,
+  "speaker": "narrator",
+  "voice": "en-US-AndrewMultilingualNeural",
+  "voice_style": "Slow and quiet, then speeding up like galloping horses",
+  "text": "Ichabod rode home alone. A rider on a black horse came next to him. He had no head! He carried his head in front of him. He chased Ichabod. "
+ },
+ {
+  "day": 3,
+  "seg": 3,
+  "speaker": "Ichabod",
+  "voice": "en-US-BrianNeural",
+  "voice_style": "Shaky, nervous, talking fast to himself",
+  "text": "\"If I can cross that bridge, I am safe!\" "
+ },
+ {
+  "day": 3,
+  "seg": 4,
+  "speaker": "narrator",
+  "voice": "en-US-AndrewMultilingualNeural",
+  "voice_style": "Big sound effect, then a quiet, puzzled morning voice",
+  "text": "He crossed it, but the rider threw his head at him. Crash! The next morning, Ichabod was gone. People found his hat and a broken pumpkin near the bridge. And Brom always laughed at the word \"pumpkin.\""
+ },
+ {
+  "day": 4,
+  "seg": 0,
+  "speaker": "narrator",
+  "voice": "en-US-AndrewMultilingualNeural",
+  "voice_style": "Bright London morning, a little funny",
+  "text": "Mr. Wilson had bright red hair. His helper, Vincent, showed him a strange job in the newspaper. It was for red-haired men only! Every day, Wilson copied a big book from ten to two, and he got four pounds a week. But one morning, the office door was locked. A small card was on it. "
+ },
+ {
+  "day": 4,
+  "seg": 1,
+  "speaker": "Card",
+  "voice": "en-US-SteffanNeural",
+  "voice_style": "Short and flat, like reading a sign aloud",
+  "text": "\"The Red-Headed League is closed.\" "
+ },
+ {
+  "day": 4,
+  "seg": 2,
+  "speaker": "narrator",
+  "voice": "en-US-AndrewMultilingualNeural",
+  "voice_style": "Curious detective voice",
+  "text": "Wilson told Holmes everything. His helper worked for half pay and often went down to a room under the shop. Holmes went to the shop. He hit the street with his stick and looked at the helper's knees. Then he walked around the corner and looked at a big bank. "
+ },
+ {
+  "day": 4,
+  "seg": 3,
+  "speaker": "Holmes",
+  "voice": "en-GB-ThomasNeural",
+  "voice_style": "Calm, sharp and a little mysterious",
+  "text": "\"Watson, come with me tonight. It may be dangerous.\""
+ },
+ {
+  "day": 5,
+  "seg": 0,
+  "speaker": "narrator",
+  "voice": "en-US-AndrewMultilingualNeural",
+  "voice_style": "Low, quiet, like walking into a dark room",
+  "text": "That night, Holmes, Watson, a police officer, and a bank manager went down under the bank. It was a big, dark room full of boxes. "
+ },
+ {
+  "day": 5,
+  "seg": 1,
+  "speaker": "Bank Manager",
+  "voice": "en-US-GuyNeural",
+  "voice_style": "Proud but nervous, whispering",
+  "text": "\"These boxes are full of French gold.\" "
+ },
+ {
+  "day": 5,
+  "seg": 2,
+  "speaker": "Holmes",
+  "voice": "en-GB-ThomasNeural",
+  "voice_style": "Very quiet, serious",
+  "text": "\"Now we wait in the dark.\" "
+ },
+ {
+  "day": 5,
+  "seg": 3,
+  "speaker": "narrator",
+  "voice": "en-US-AndrewMultilingualNeural",
+  "voice_style": "Slow and tense, then a sudden surprise",
+  "text": "Holmes turned off his light. They waited for more than an hour. Nobody moved. Then Watson saw a small light in the stone floor. A white hand came up between the stones! A big stone turned over, and there was a square hole. A young face looked out. Holmes jumped and caught him. Holmes had seen that face before."
  }
 ]

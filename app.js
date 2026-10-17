@@ -9,6 +9,8 @@ function esc(s){return String(s).replace(/[&<>"]/g,function(c){return{'&':'&amp;
 function today(){var d=new Date();return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0')}
 function uuid(){return crypto.randomUUID?crypto.randomUUID():'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g,function(c){var r=Math.random()*16|0;return(c=='x'?r:(r&3|8)).toString(16)})}
 function pop(t){var p=$('#pop');p.textContent=t;p.hidden=false;clearTimeout(pop.t);pop.t=setTimeout(function(){p.hidden=true},1800)}
+document.addEventListener('error',function(e){var t=e.target;if(t.tagName==='IMG'&&/\.jpg$/.test(t.getAttribute('src')||'')){t.src=t.getAttribute('src').replace(/\.jpg$/,'.svg')}},true);
+function cardHtml(c,small){return '<div class="card'+(small?' sm':'')+'"><img src="'+c.img+'" alt=""><div><b>'+esc(c.name)+'</b> <span class="sub">'+esc(c.en)+'</span><br>'+esc(c.line)+'</div></div>'}
 function hdr(){$('#clueCount').textContent=st.clues.length?'단서 '+st.clues.length+'개':''}
 // ---------- 서버 기록 (fc_ 테이블, 추가만 가능) ----------
 function sb(path,body,extra){return fetch(C.url+path,Object.assign({method:'POST',headers:Object.assign({apikey:C.key,'Content-Type':'application/json',Prefer:'return=minimal'},extra||{}),body:body}))}
@@ -26,7 +28,7 @@ function open(n){if(teacher)return true;if(!st.pre)return false;if(n===1)return 
 // ---------- 라우팅 ----------
 function go(h){location.hash=h}
 window.addEventListener('hashchange',route);$('#home').onclick=function(e){e.preventDefault();go('#/')};
-function route(){window.scrollTo(0,0);stopAudio();hdr();var h=location.hash.replace('#/','').split('/');
+function route(){window.scrollTo(0,0);$('#pop').hidden=true;stopAudio();hdr();var h=location.hash.replace('#/','').split('/');
  if(!st.learner&&h[0]!==''&&h[0]!=='join'&&h[0]!=='teacher')return start();
  ({'':start,'join':join,'pre':function(){check('pre')},'list':list,'day':function(){day(+h[1],h[2]||'intro')},'post':function(){check('post')},'cert':cert,'report':report,'end':end,'teacher':tpin})[h[0]]?({'':start,'join':join,'pre':function(){check('pre')},'list':list,'day':function(){day(+h[1],h[2]||'intro')},'post':function(){check('post')},'cert':cert,'report':report,'end':end,'teacher':tpin})[h[0]]():start()}
 function start(){if(st.learner)return go(st.pre?'#/list':'#/pre');
@@ -60,20 +62,20 @@ function stopAudio(){audio.pause();playing=null;document.querySelectorAll('.s.on
 function dayState(n){return st.days[n]||(st.days[n]={})}
 function day(n,step){var D=DAYS[n];if(!D||!open(n))return go('#/list');var S=dayState(n);
  var steps=['intro','story','clue','rec','quiz','done'],nx=function(){go('#/day/'+n+'/'+steps[steps.indexOf(step)+1])};
- if(step==='intro'){app.innerHTML='<p class="dots">'+n+'일 차</p><h1>'+esc(D.title)+'</h1>'+D.intro.map(function(t){return '<p>'+esc(t)+'</p>'}).join('')+'<button class="main" id="b">이야기 들으러 가요</button>';$('#b').onclick=nx}
+ if(step==='intro'){app.innerHTML='<p class="dots">'+n+'일 차</p><h1>'+esc(D.title)+'</h1>'+(D.recap?'<div class="recap"><p class="sub">지난 이야기</p><p>'+esc(D.recap)+'</p></div>':'')+'<img class="scene" src="'+D.cover+'" alt="">'+D.intro.map(function(t){return '<p>'+esc(t)+'</p>'}).join('')+'<h2>오늘 나오는 인물</h2>'+D.cards.map(function(c){return cardHtml(c)}).join('')+'<button class="main" id="b">이야기 들으러 가요</button>';$('#b').onclick=nx}
  if(step==='story'||step==='clue')story(D,S,step,nx);
  if(step==='rec')rec(D,n,nx);
  if(step==='quiz')quiz(D,S,n,nx);
  if(step==='done')done(D,S,n)}
 function story(D,S,step,nx){var gseen={},cw=D.clue_words.map(function(c){return c.word});
- function words(t){return esc(t).replace(/[A-Za-z']+/g,function(w){var l=w.toLowerCase(),c=cw.find(function(x){return l===x||l.indexOf(x)===0&&l.length<=x.length+2});
+ function words(t){return esc(t).replace(/[A-Za-z']+/g,function(w){var l=w.toLowerCase(),c=cw.find(function(x){return l===x||(D.forms[x]||[]).indexOf(l)>=0||l.indexOf(x)===0&&l.length<=x.length+2});
   if(c)return '<span class="clue'+(st.clues.indexOf(c)>=0?' got':'')+'" data-c="'+c+'">'+w+'</span>';
   if(D.gloss[l]&&!gseen[l.replace(/s$|ves$/,'')]){gseen[l.replace(/s$|ves$/,'')]=1;return '<span class="gl" data-g="'+esc(D.gloss[l])+'" data-w="'+w+'">'+w+'</span>'}return w})}
  var h='<p class="dots">'+(step==='story'?'이야기 듣기':'단서 모으기')+'</p>';
  h+=step==='story'?'<p class="sub">문장을 누르면 그 문장만 다시 들려요. 점선 단어는 누르면 뜻이 나와요.</p>':'<p>밑줄 친 단어가 오늘의 단서예요. 눌러서 단서 수첩에 넣어요. <span class="acc" id="cn"></span></p>';
  h+='<div class="row"><button id="play">처음부터 듣기</button><label class="chk" style="margin:0"><input type="checkbox" id="slow">천천히</label></div><div class="story">';
- D.sentences.forEach(function(s,i){if(D.img_after.indexOf(s.seg)>=0&&(i===0||D.sentences[i-1].seg!==s.seg)&&i>0)h+='<img class="scene" src="'+D.img[D.img_after.indexOf(s.seg)]+'" alt="">';
-  if(i===0)h+='<img class="scene" src="'+D.img[0]+'" alt="">';
+ D.sentences.forEach(function(s,i){D.checks.forEach(function(c){if(c.at===i)h+='<div class="check"><span class="acc">'+esc(c.text.split('? ')[0])+'?</span> '+esc(c.text.split('? ').slice(1).join('? '))+c.chars.map(function(x){return cardHtml(x,1)}).join('')+'</div>'});
+  D.scenes.forEach(function(c){if(c.at===i)h+='<img class="scene" src="'+c.src+'" alt="">'});
   h+='<span class="s'+(s.speaker!=='narrator'?' q':'')+'" data-i="'+i+'">'+(s.speaker!=='narrator'?'<span class="who">'+esc(s.speaker)+'</span>':'')+words(s.text)+'</span> '});
  h+='</div>'+(step==='clue'?'<div id="note"></div>':'')+'<button class="main" id="b">'+(step==='story'?'다 들었어요':'단서 수첩 덮기')+'</button>';app.innerHTML=h;
  if(step!=='clue')app.querySelectorAll('.clue').forEach(function(e){e.className=''});
@@ -104,16 +106,19 @@ function rec(D,n,nx){var lines=D.record_lines,h='<p class="dots">대사 따라 �
    try{await flush();var r=await fetch(C.url+'/storage/v1/object/'+C.bucket+'/'+path,{method:'POST',headers:{apikey:C.key,'Content-Type':blob.type},body:blob});if(!r.ok)throw r.status;
     st.rec[n+'_'+i]=1;save();send('recording',n,{line:i,speaker:lines[i].speaker},path);lab.textContent='보냈어요'}catch(e){lab.textContent='못 보냈어요. 다시 눌러 주세요'}};
   mr.start()}})}
+function board(q){var have=allClues();return '<p class="note">'+esc(D5c(q))+'</p><h2>범인을 가리키는 단서 7개</h2><p class="sub">진하게 보이는 건 내가 모은 단서예요.</p><p class="board">'+q.단서_연결.map(function(c){return '<span class="'+(have.indexOf(c.word)>=0?'got':'')+'">'+esc(c.word)+' <small>'+esc(c.날짜)+'</small></span>'}).join('')+'</p>'}
+function D5c(q){return DAYS[5].cliffhanger}
+function allClues(){return st.clues}
 function quiz(D,S,n,nx){var Q=D.questions,i=0;S.quiz=S.quiz||{};
- function one(){var q=Q[i];app.innerHTML='<p class="dots">추리 문제'+(Q.length>1?' '+(i+1)+' / '+Q.length:'')+'</p><h1>'+esc(q.문제)+'</h1>'+q.보기.map(function(b){return '<button class="opt" data-k="'+b.charAt(0)+'">'+esc(b)+'</button>'}).join('')+'<div id="ex"></div>';
+ function one(){var q=Q[i];app.innerHTML='<p class="dots">'+(q.단서_연결?'범인 찾기':'추리 문제')+(Q.length>1?' '+(i+1)+' / '+Q.length:'')+'</p>'+(q.단서_연결?board(q):'')+'<h1>'+esc(q.문제)+'</h1>'+q.보기.map(function(b){return '<button class="opt" data-k="'+b.charAt(0)+'">'+esc(b)+'</button>'}).join('')+'<div id="ex"></div>';
   app.querySelectorAll('.opt').forEach(function(b){b.onclick=function(){if(S.quiz[i]!==undefined&&S.quiz[i].first!==undefined&&$('#ex').innerHTML)return;var ok=b.dataset.k===q.정답;
    if(S.quiz[i]===undefined){S.quiz[i]={first:ok,pick:b.dataset.k};save();send('answer',n,{q:i,pick:b.dataset.k,correct:ok})}
    b.classList.add(ok?'ok':'no');if(!ok){pop('다시 골라 봐요');return}
-   $('#ex').innerHTML='<p class="note">'+esc(q.해설)+'</p><button class="main" id="b">'+(i<Q.length-1?'다음 문제':'사건 정리')+'</button>';$('#b').onclick=function(){i++;i<Q.length?one():nx()}}})}
+   $('#ex').innerHTML=(q.단서_연결?'<h2>단서를 이어 보면</h2>'+q.단서_연결.map(function(c){return '<p><b class="acc">'+esc(c.word)+'</b> '+esc(c.추리)+'</p>'}).join(''):'')+'<p class="note">'+esc(q.해설)+'</p>'+(q.한_줄_답_예시?'<p class="story" style="font-size:18px">'+esc(q.한_줄_답_예시)+' <button id="ans">듣기</button></p>':'')+'<button class="main" id="b">'+(i<Q.length-1?'다음 문제':'사건 정리')+'</button>';$('#b').onclick=function(){i++;i<Q.length?one():nx()};if($('#ans'))$('#ans').onclick=function(){stopAudio();audio.src=q.answer_audio;audio.play().catch(function(){})}}})}
  one()}
 function done(D,S,n){if(!S.done){S.done=true;S.doneDate=today();save();var c=Object.values(S.quiz||{}).filter(function(x){return x.first}).length;send('done',n,{correct:c,total:D.questions.length,clues:st.clues.slice()})}
  app.innerHTML='<p class="dots">'+n+'일 차 끝</p><h1>'+esc(D.badge)+(((D.badge.charCodeAt(D.badge.length-1)-44032)%28)?'을':'를')+' 받았어요</h1><p>오늘 모은 단서: <span class="acc">'+D.clue_words.map(function(c){return c.word}).join(', ')+'</span></p>'+
-  '<img class="scene" src="'+D.teaser_img+'" alt=""><p class="note">'+esc(D.cliffhanger)+'</p>'+(n<5?'<p class="sub">다음 사건: '+esc(D.next_title)+'</p><p class="sub">'+(C.unlockRule==='done'?'다음 사건이 열렸어요.':'다음 사건은 내일 열려요.')+'</p>':'')+
+  '<img class="scene" src="'+D.teaser_img+'" alt="">'+(n<5?'<p class="note">'+esc(D.cliffhanger)+'</p>':'<p>5일 동안 모은 단서는 모두 '+st.clues.length+'개예요. 이제 처음에 풀었던 단어 문제를 다시 풀어 봐요.</p>')+(n<5?'<p class="sub">다음 사건: '+esc(D.next_title)+'</p><p class="sub">'+(C.unlockRule==='done'?'다음 사건이 열렸어요.':'다음 사건은 내일 열려요.')+'</p>':'')+
   '<button class="main" id="b">'+(n<5?'사건 목록으로':'끝난 뒤 단어 점검')+'</button>';$('#b').onclick=function(){go(n<5?'#/list':'#/post')}}
 // ---------- 수료증·리포트·안내 ----------
 function fill(t,m){return t.replace(/\{([^}]+)\}/g,function(a,k){return m[k]!==undefined&&m[k]!==''?m[k]:'(선생님이 적어요)'})}

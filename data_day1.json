@@ -6,13 +6,72 @@
   "호랑이 쉬어칸은 그 아기를 내놓으라고 해요.",
   "모글리는 어떻게 늑대 무리에 남을 수 있었을까요?"
  ],
- "img": [
-  "img/d1_a.jpg",
-  "img/d1_b.jpg"
+ "recap": null,
+ "cover": "img/d1_a.jpg",
+ "cards": [
+  {
+   "id": "mowgli",
+   "name": "모글리",
+   "en": "Mowgli",
+   "line": "늑대 가족의 집에 들어온 사람 아기예요. 이름은 '작은 개구리'라는 뜻이에요.",
+   "img": "img/p_mowgli.jpg"
+  },
+  {
+   "id": "motherwolf",
+   "name": "엄마 늑대",
+   "en": "Mother Wolf",
+   "line": "늑대 가족의 엄마예요. 원작에서는 '악마'라는 별명이 붙을 만큼 겁이 없어요.",
+   "img": "img/p_motherwolf.jpg"
+  },
+  {
+   "id": "sherekhan",
+   "name": "쉬어칸",
+   "en": "Shere Khan",
+   "line": "한쪽 다리를 저는 호랑이예요. 정글의 법이 금지한 사람 사냥을 하려고 해요.",
+   "img": "img/p_sherekhan.jpg"
+  }
  ],
- "img_after": [
-  0,
-  4
+ "scenes": [
+  {
+   "at": 0,
+   "src": "img/d1_a.jpg"
+  },
+  {
+   "at": 11,
+   "src": "img/d1_b.jpg"
+  }
+ ],
+ "checks": [
+  {
+   "at": 7,
+   "text": "지금 무슨 일이? 호랑이 쉬어칸이 문 앞에서 아기를 내놓으라고 해요.",
+   "chars": []
+  },
+  {
+   "at": 11,
+   "text": "지금 무슨 일이? 엄마 늑대가 \"안 돼!\" 하고 쉬어칸에게 맞섰어요.",
+   "chars": []
+  },
+  {
+   "at": 13,
+   "text": "지금 무슨 일이? 이제 늑대들이 모이는 회의 바위예요. 두 동물이 모글리 편을 들어야 해요.",
+   "chars": [
+    {
+     "id": "baloo",
+     "name": "발루",
+     "en": "Baloo",
+     "line": "늑대 새끼들에게 정글의 법을 가르치는 졸린 갈색 곰이에요.",
+     "img": "img/p_baloo.jpg"
+    },
+    {
+     "id": "bagheera",
+     "name": "바기라",
+     "en": "Bagheera",
+     "line": "검은 흑표범이에요. 꾀 많고 용감해서 정글에서 아무도 함부로 건드리지 못해요.",
+     "img": "img/p_bagheera.jpg"
+    }
+   ]
+  }
  ],
  "sentences": [
   {
@@ -108,26 +167,20 @@
   {
    "seg": 4,
    "speaker": "narrator",
-   "text": "Then Bagheera the black panther paid a price:",
+   "text": "Then Bagheera the black panther paid a price: a fat bull.",
    "src": "audio/d1_05_05.mp3"
   },
   {
    "seg": 4,
    "speaker": "narrator",
-   "text": "a fat bull.",
+   "text": "So Mowgli became one of the wolves.",
    "src": "audio/d1_05_06.mp3"
   },
   {
    "seg": 4,
    "speaker": "narrator",
-   "text": "So Mowgli became one of the wolves.",
-   "src": "audio/d1_05_07.mp3"
-  },
-  {
-   "seg": 4,
-   "speaker": "narrator",
    "text": "But in the dark, Shere Khan was still shouting.",
-   "src": "audio/d1_05_08.mp3"
+   "src": "audio/d1_05_07.mp3"
   }
  ],
  "gloss": {
@@ -135,6 +188,15 @@
   "wolves": "늑대들",
   "panther": "흑표범",
   "bull": "황소"
+ },
+ "forms": {
+  "brave": [],
+  "tiger": [],
+  "protect": [
+   "protected"
+  ],
+  "law": [],
+  "price": []
  },
  "clue_words": [
   {

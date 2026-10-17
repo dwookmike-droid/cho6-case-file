@@ -26,3 +26,9 @@ label{display:block;margin:10px 0}input[type=text],input[type=tel],input[type=pa
 pre{white-space:pre-wrap;font:15px/1.7 Pretendard,sans-serif;background:#fff;border:1px solid var(--line);padding:14px;border-radius:8px}
 .cert{border:1px solid var(--ink);padding:28px 22px;text-align:center;background:#fff}.cert h1{font-family:Georgia,serif}
 .dots{color:var(--sub);font-size:13px;letter-spacing:.2em}
+.recap{border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:10px 0;margin:6px 0 4px;font-size:15px}.recap p{margin:2px 0 6px}
+.card{display:flex;gap:12px;align-items:center;margin:10px 0;font-size:15px;line-height:1.5}.card img{width:64px;height:64px;border-radius:50%;object-fit:cover;flex:none;background:#eee}
+.card.sm img{width:44px;height:44px}.card.sm{margin:8px 0 0;font-size:14px}
+.check{font:15px/1.6 Pretendard,-apple-system,sans-serif;margin:16px 0;padding:2px 0 2px 12px;border-left:2px solid var(--acc);color:#444}
+.board span{display:inline-block;border:1px solid var(--line);border-radius:999px;padding:4px 12px;margin:3px;color:#999}.board span.got{color:var(--ink);border-color:var(--ink);font-weight:700}.board small{font-weight:400;color:var(--sub)}
+h1,h2,p,.card{word-break:keep-all;overflow-wrap:anywhere}
