@@ -32,3 +32,21 @@ pre{white-space:pre-wrap;font:15px/1.7 Pretendard,sans-serif;background:#fff;bor
 .check{font:15px/1.6 Pretendard,-apple-system,sans-serif;margin:16px 0;padding:2px 0 2px 12px;border-left:2px solid var(--acc);color:#444}
 .board span{display:inline-block;border:1px solid var(--line);border-radius:999px;padding:4px 12px;margin:3px;color:#999}.board span.got{color:var(--ink);border-color:var(--ink);font-weight:700}.board small{font-weight:400;color:var(--sub)}
 h1,h2,p,.card{word-break:keep-all;overflow-wrap:anywhere}
+/* ---- 책 앱 ---- */
+.tag{display:inline-block;font:600 11px Pretendard,sans-serif;letter-spacing:.02em;color:var(--acc);border:1px solid var(--acc);border-radius:999px;padding:1px 8px;margin-left:6px;vertical-align:2px}
+.en{font-size:19px;line-height:1.85;font-family:Georgia,"Times New Roman",serif;margin:0 0 14px}
+.sign{font:16px/1.7 Georgia,serif;text-align:center;border-top:1px solid var(--ink);border-bottom:1px solid var(--ink);padding:10px 8px;margin:14px 6px;letter-spacing:.02em}
+.check .ans{display:block;margin-top:6px;color:var(--ink)}.check button{font-size:13px;padding:4px 12px;margin-top:6px}
+.opt.sel{border-color:var(--ink);font-weight:700;background:#fff}
+.toc{list-style:none;padding:0;margin:0}.toc li{padding:12px 0;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;gap:12px;align-items:center}
+.toc li.lock{color:#aaa}.toc .t{line-height:1.45}.toc .t small{display:block;color:var(--sub);font-size:13px}.toc li.lock .t small{color:#bbb}.toc .st{flex:none;font-size:14px}
+.work{font-size:13px;color:var(--sub);letter-spacing:.1em;margin:22px 0 2px}
+.links{display:flex;flex-wrap:wrap;gap:8px;margin:18px 0}.links a{font-size:14px;color:var(--ink);border:1px solid var(--line);border-radius:999px;padding:6px 14px;text-decoration:none;background:#fff}
+.word{border-bottom:1px solid var(--line);padding:12px 0}.word b{font:700 19px Georgia,serif}.word .ex{font-family:Georgia,serif;color:#333}
+.mini{font-size:13px;padding:3px 10px;margin-left:6px;vertical-align:1px}
+.clue-card{border:1px solid var(--line);border-radius:10px;padding:12px 14px;margin:10px 0;background:#fff}.clue-card.got{border-color:var(--acc)}
+.clue-card .en2{font-family:Georgia,serif;color:#444;font-size:15px}
+.cmp{border-left:3px solid var(--acc);padding:4px 0 4px 12px;margin:12px 0}.cmp .ok{color:var(--ink);font-weight:700}.cmp .no{color:var(--acc);font-weight:700}
+.prog{color:var(--sub);font-size:13px}
+.check .ans[hidden]{display:none}
+h1 .sub{font-weight:500;font-size:15px!important;letter-spacing:0}

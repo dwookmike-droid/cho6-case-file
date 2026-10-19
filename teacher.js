@@ -1,6 +1,7 @@
 (function(){
-// 선생님 기록 보기. Supabase Auth 로그인 세션으로만 읽는다. config.js 의 PIN 은 여기서 아무 것도 열지 않는다.
-var C=window.FC_CONFIG,K=window.COMMON,DAYS=window.DAYS,$=function(s){return document.querySelector(s)},app=$('#app'),SK='fc_teacher_auth';
+// 선생님 기록 보기 (책 앱). Supabase Auth 로그인 세션으로만 읽는다. config.js 의 PIN 은 여기서 아무 것도 열지 않는다.
+// 로그인·세션 부분은 5편 앱 teacher.js 와 같다. 바뀐 곳은 목록의 진도(0~11장)와 학생 상세(장별 기록)다.
+var C=window.FC_CONFIG,B=window.BOOK,$=function(s){return document.querySelector(s)},app=$('#app'),SK='fc_teacher_auth';
 var HERE=location.origin+location.pathname,data=null,hideTest=true;
 function esc(s){return String(s==null?'':s).replace(/[&<>"]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})}
 function pop(t){var p=$('#pop');p.textContent=t;p.hidden=false;clearTimeout(pop.t);pop.t=setTimeout(function(){p.hidden=true},2600)}
@@ -36,28 +37,34 @@ window.addEventListener('hashchange',function(){if(data)route()});
 function route(){var m=location.hash.match(/^#\/s\/(.+)$/);window.scrollTo(0,0);m?detail(m[1]):list()}
 function subsOf(id){return data.S.filter(function(s){return s.learner_id===id})}
 function isTest(l){return /^TEST_/i.test(l.student_name||'')||l.source==='TEST_grokbot'}
-function dots(ss){var d='';for(var n=1;n<=5;n++){var done=ss.some(function(s){return s.kind==='done'&&s.day===n}),any=ss.some(function(s){return s.day===n});d+=done?'<b>'+n+'</b>':(any?n:'·')}return d}
+function isBook(l){return l.source===C.source}
+function lab(n){return B.toc[n]?B.toc[n].label:(n===12?'한 줄 감상':n+'')}
+function dots(l,ss){var d='',a=isBook(l)?0:1,z=isBook(l)?11:5;for(var n=a;n<=z;n++){var done=ss.some(function(s){return s.kind==='done'&&s.day===n}),any=ss.some(function(s){return s.day===n});d+=done?'<b>'+n+'</b>':(any?n:'·')}return d}
 function list(){var L=data.L.filter(function(l){return !hideTest||!isTest(l)});
  var h='<h1>학생 기록</h1><div class="row"><label class="chk" style="margin:0"><input type="checkbox" id="ht" '+(hideTest?'checked':'')+'>테스트 기록 숨기기</label><button id="rf">새로고침</button></div>';
- h+='<p class="mut">진도: 굵은 숫자는 그날을 끝낸 것, 보통 숫자는 시작만 한 것이에요.</p>';
+ h+='<p class="mut">진도: 굵은 숫자는 다 읽은 장, 보통 숫자는 시작만 한 장이에요. 0은 프롤로그, 11은 에필로그예요. 「5편 앱」 표시가 있는 학생은 예전 5일 코스 기록이에요(1~5일).</p>';
  if(!L.length)h+='<p>아직 기록이 없어요.</p>';else{h+='<table class="tbl"><tr><th>이름</th><th>학년</th><th class="hide-s">동의</th><th>최근 활동</th><th>진도</th></tr>';
   L.forEach(function(l){var ss=subsOf(l.id),last=ss.length?ss[ss.length-1].created_at:l.created_at;
-   h+='<tr class="l" data-id="'+l.id+'"><td>'+esc(l.student_name)+'</td><td>'+esc(l.school_grade||'-')+'</td><td class="hide-s">'+t(l.consent_at)+'</td><td>'+t(last)+'</td><td class="dd">'+dots(ss)+'</td></tr>'});h+='</table>'}
+   h+='<tr class="l" data-id="'+l.id+'"><td>'+esc(l.student_name)+(isBook(l)?'':'<span class="src">5편 앱</span>')+'</td><td>'+esc(l.school_grade||'-')+'</td><td class="hide-s">'+t(l.consent_at)+'</td><td>'+t(last)+'</td><td class="dd">'+dots(l,ss)+'</td></tr>'});h+='</table>'}
  app.innerHTML=h;$('#ht').onchange=function(){hideTest=this.checked;list()};$('#rf').onclick=start;
  app.querySelectorAll('tr.l').forEach(function(r){r.onclick=function(){location.hash='#/s/'+r.dataset.id}})}
-function wc(p){if(!p||!p.ans)return '';var W=K.word_check.items;return '<p class="mut">'+W.map(function(i){var v=p.ans[i.word];return v===undefined?'':(v?i.word:'<s>'+esc(i.word)+'</s>')}).filter(Boolean).join(' · ')+'</p>'}
+function row(s){var p=s.payload||{},D=B.chapters[s.day];
+ if(s.kind==='answer'){var q=D&&D.quiz[p.q||0];return '<p class="kv"><span>문제 '+((p.q||0)+1)+'</span>'+(p.correct?'처음에 맞혔어요':'처음엔 틀렸어요')+' (고른 답 '+esc(p.pick)+(q?', 정답 '+esc(q.answer):'')+') · '+t(s.created_at)+'</p>'+(q?'<p class="mut">'+esc(q.q)+'</p>':'')}
+ if(s.kind==='solve'){var h='<p class="kv"><span>직접 풀어 보기</span>'+t(s.created_at)+'</p>';(p.picks||[]).forEach(function(k,j){var a=D&&D.solve_answers[j],q=D&&D.solve&&D.solve.qs[j],o=q&&q.opts.find(function(x){return x.charAt(0)===k});
+   h+='<p class="mut">질문 '+(j+1)+': 고른 답 '+esc(o||k)+(a?(k===a.answer?' · 맞음':' · 정답 '+esc(a.answer+' '+a.label)):'')+'</p>'});return h}
+ if(s.kind==='done')return '<p class="kv"><span>다 읽음</span>'+t(s.created_at)+(p.total!==undefined?' · 처음에 맞힌 문제 '+(p.correct||0)+'/'+p.total:'')+(p.words?' · 읽은 단어 '+p.words:'')+(p.clues!==undefined?' · 이 장 단서 '+(Array.isArray(p.clues)?p.clues.length:p.clues)+'개':'')+'</p>';
+ if(s.kind==='recording')return '<p class="kv"><span>녹음</span>'+esc(p.speaker||'')+' · '+t(s.created_at)+'</p>'+(p.text?'<p class="mut">'+esc(p.text)+'</p>':'')+(s.audio_path?'<audio controls preload="none" data-path="'+esc(s.audio_path)+'"></audio>':'');
+ if(s.kind==='reflection')return '<p class="kv"><span>한 줄 감상</span>'+t(s.created_at)+'</p><p>'+esc(p.text||'')+'</p>';
+ return '<p class="kv"><span>'+esc(s.kind)+'</span>'+t(s.created_at)+'</p><p class="mut">'+esc(JSON.stringify(p))+'</p>'}
 async function detail(id){var l=data.L.find(function(x){return x.id===id});if(!l)return list();var ss=subsOf(id);
- var h='<p class="sub"><a href="#/">← 목록</a></p><h1>'+esc(l.student_name)+'</h1>';
+ var h='<p class="sub"><a href="#/">← 목록</a></p><h1>'+esc(l.student_name)+(isBook(l)?'':'<span class="src">5편 앱</span>')+'</h1>';
  h+='<p class="kv"><span>학년</span>'+esc(l.school_grade||'-')+'</p><p class="kv"><span>보호자 연락처</span>'+esc(l.parent_phone||'-')+'</p><p class="kv"><span>동의</span>개인정보 '+(l.consent_privacy?'예':'아니요')+' · 보호자 '+(l.consent_guardian?'예':'아니요')+' · '+t(l.consent_at)+'</p><p class="kv"><span>등록</span>'+t(l.created_at)+'</p>';
- var pre=ss.filter(function(s){return s.kind==='pretest'}).pop(),post=ss.filter(function(s){return s.kind==='posttest'}).pop();
- h+='<h2>단어 점검</h2><p class="kv"><span>시작 전</span>'+(pre?pre.payload.score+' / 15 · '+t(pre.created_at):'아직 안 했어요')+'</p>'+(pre?wc(pre.payload):'')+'<p class="kv"><span>끝난 뒤</span>'+(post?post.payload.score+' / 15 · '+t(post.created_at):'아직 안 했어요')+'</p>'+(post?wc(post.payload):'');
- for(var n=1;n<=5;n++){var D=DAYS[n],ds=ss.filter(function(s){return s.day===n});h+='<h2>'+n+'일 차 · '+esc(D?D.title:'')+'</h2>';
-  if(!ds.length){h+='<p class="mut">기록 없음</p>';continue}
-  ds.forEach(function(s){var p=s.payload||{};
-   if(s.kind==='answer'){var q=D&&D.questions[p.q||0];h+='<p class="kv"><span>문제</span>'+(p.correct?'처음에 맞혔어요':'처음엔 틀렸어요')+' (고른 답 '+esc(p.pick)+(q?', 정답 '+esc(q.정답):'')+') · '+t(s.created_at)+'</p>'}
-   else if(s.kind==='done'){h+='<p class="kv"><span>마침</span>'+t(s.created_at)+' · 맞힌 문제 '+(p.correct||0)+'/'+(p.total||1)+(p.clues?' · 모은 단서 '+p.clues.length+'개':'')+'</p>'}
-   else if(s.kind==='recording'){h+='<p class="kv"><span>녹음</span>'+esc(p.speaker||'')+' 대사 · '+t(s.created_at)+'</p>'+(s.audio_path?'<audio controls preload="none" data-path="'+esc(s.audio_path)+'"></audio>':'')}})}
- h+='<p class="mut" style="margin-top:28px">이야기 속 \'지금 무슨 일이?\' 안내는 읽기 도움이라 따로 기록하지 않아요.</p>';
+ var days=[];ss.forEach(function(s){if(days.indexOf(s.day)<0)days.push(s.day)});days.sort(function(a,b){return a-b});
+ if(!days.length)h+='<p class="mut">아직 기록이 없어요.</p>';
+ days.forEach(function(n){var T=B.toc[n];h+='<h2>'+(isBook(l)?esc(lab(n))+(T?' · '+esc(T.title_en):''):n+'일 차')+'</h2>';
+  if(!isBook(l)){ss.filter(function(s){return s.day===n}).forEach(function(s){h+='<p class="kv"><span>'+esc(s.kind)+'</span>'+t(s.created_at)+'</p><p class="mut">'+esc(JSON.stringify(s.payload||{}))+'</p>'});return}
+  ss.filter(function(s){return s.day===n}).forEach(function(s){h+=row(s)})});
+ h+='<p class="mut" style="margin-top:28px">「지금 무슨 일이?」와 단어장, 책갈피는 읽기 도움이라 따로 기록하지 않아요.</p>';
  app.innerHTML=h;
  var au=app.querySelectorAll('audio[data-path]');for(var i=0;i<au.length;i++){try{var r=await api('/storage/v1/object/sign/'+C.bucket+'/'+au[i].dataset.path.split('/').map(encodeURIComponent).join('/'),{method:'POST',body:JSON.stringify({expiresIn:3600})});au[i].src=C.url+'/storage/v1'+r.signedURL}catch(e){au[i].insertAdjacentHTML('afterend','<p class="mut">녹음을 불러오지 못했어요.</p>')}}}
 start();
