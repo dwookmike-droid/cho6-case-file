@@ -156,15 +156,25 @@ function quiz(D,S,n,bar,next){var Q=D.quiz;S.quiz=S.quiz||{};var i=0;while(i<Q.l
    b.classList.add(ok?'ok':'no');if(!ok){pop('다시 골라 봐요');return}shown=true;S.quiz[i].ok=true;save();
    $('#ex').innerHTML='<p class="note">'+esc(q.why)+'</p><button class="main" id="b">'+(i<Q.length-1?'다음 문제':'다음으로')+'</button>';$('#b').onclick=function(){i++;i<Q.length?one():next()}}})}
  one()}
+// 녹음 중 표시: 빨간 점이 깜빡이고, 마이크 소리를 파형으로 그린다. 파형을 못 그리는 브라우저는 점만 보인다
+function meter(s,box){box.hidden=false;var cv=box.querySelector('canvas'),g=cv.getContext('2d'),AC=window.AudioContext||window.webkitAudioContext,ac=null,an=null,buf=null,raf=0;
+ try{ac=new AC();an=ac.createAnalyser();an.fftSize=1024;ac.createMediaStreamSource(s).connect(an);buf=new Uint8Array(an.fftSize);if(ac.state==='suspended')ac.resume()}catch(e){ac=null}
+ var lv=[],N=48;  // 최근 소리 크기를 막대로 쌓아 오른쪽에서 왼쪽으로 흘린다(작은 말소리도 보이게 키움)
+ function draw(){if(!box.isConnected)return;var w=cv.width,h=cv.height,r=0;
+  if(an){an.getByteTimeDomainData(buf);for(var j=0;j<buf.length;j++){var v=(buf[j]-128)/128;r+=v*v}r=Math.min(1,Math.sqrt(r/buf.length)*5)}
+  lv.push(r);if(lv.length>N)lv.shift();g.clearRect(0,0,w,h);g.fillStyle='#d0302a';var bw=w/N;
+  for(var k=0;k<lv.length;k++){var bh=Math.max(4,lv[k]*h*0.95),x=w-(lv.length-k)*bw;g.fillRect(x+bw*0.2,(h-bh)/2,bw*0.6,bh)}
+  raf=requestAnimationFrame(draw)}
+ draw();return function(){cancelAnimationFrame(raf);box.hidden=true;if(ac)try{ac.close()}catch(e){}}}
 function rec(D,n,bar,next){var h=bar+'<h1>따라 말하기</h1><p class="sub">본보기를 한 번 듣고, 따라 말하면서 녹음해요. 녹음은 선생님만 들을 수 있게 비공개로 보내요. 건너뛰어도 괜찮아요.</p>';
- D.record.forEach(function(l,i){h+='<p class="en" style="margin-top:18px">'+esc(l.t)+'</p><div class="row"><button data-p="'+esc(l.src)+'">듣기</button><button data-r="'+i+'">녹음</button><span class="sub" id="rs'+i+'">'+(st.rec[n+'_'+i]?'보냈어요':'')+'</span></div>'});
+ D.record.forEach(function(l,i){h+='<p class="en" style="margin-top:18px">'+esc(l.t)+'</p><div class="row"><button data-p="'+esc(l.src)+'">듣기</button><button data-r="'+i+'">녹음</button><span class="sub" id="rs'+i+'">'+(st.rec[n+'_'+i]?'보냈어요':'')+'</span></div><div class="recui" id="ru'+i+'" hidden><span class="rdot"></span><span class="rlab">녹음 중</span><canvas width="480" height="72"></canvas></div>'});
  app.innerHTML=h+'<button class="main" id="b">다음으로</button>';$('#b').onclick=next;
  app.querySelectorAll('[data-p]').forEach(function(b){b.onclick=function(){play(b.dataset.p)}});
- var mr=null;app.querySelectorAll('[data-r]').forEach(function(b){b.onclick=async function(){var i=b.dataset.r,lab=$('#rs'+i);
-  if(mr){mr.stop();return}stopAudio();
-  try{var s=await navigator.mediaDevices.getUserMedia({audio:true})}catch(e){lab.textContent='마이크를 쓸 수 없어요';return}
-  var chunks=[];mr=new MediaRecorder(s);mr.ondataavailable=function(e){chunks.push(e.data)};b.textContent='멈추기';lab.textContent='녹음 중';
-  mr.onstop=async function(){s.getTracks().forEach(function(t){t.stop()});mr=null;b.textContent='다시 녹음';var blob=new Blob(chunks,{type:chunks[0]&&chunks[0].type||'audio/webm'});
+ var mr=null,asking=false;app.querySelectorAll('[data-r]').forEach(function(b){b.onclick=async function(){var i=b.dataset.r,lab=$('#rs'+i);
+  if(mr){mr.stop();return}if(asking)return;stopAudio();asking=true;lab.textContent='마이크 준비 중';  // 마이크 허락을 기다리는 동안 또 눌러도 두 번 시작하지 않게
+  try{var s=await navigator.mediaDevices.getUserMedia({audio:true})}catch(e){asking=false;lab.textContent='마이크를 쓸 수 없어요';return}asking=false;
+  var chunks=[];mr=new MediaRecorder(s);mr.ondataavailable=function(e){chunks.push(e.data)};b.textContent='■ 멈추기';b.classList.add('rec');lab.textContent='';var off=meter(s,$('#ru'+i));
+  mr.onstop=async function(){off();s.getTracks().forEach(function(t){t.stop()});mr=null;b.textContent='다시 녹음';b.classList.remove('rec');var blob=new Blob(chunks,{type:chunks[0]&&chunks[0].type||'audio/webm'});
    var ext=blob.type.indexOf('mp4')>=0?'m4a':'webm',path=st.learner.id+'/b'+n+'_'+i+'_'+Date.now()+'.'+ext;lab.textContent='보내는 중';
    if(!C.sync){lab.textContent='지금은 녹음을 보낼 수 없어요';return}
    try{await flush();var r=await fetch(C.url+'/storage/v1/object/'+C.bucket+'/'+path,{method:'POST',headers:{apikey:C.key,'Content-Type':blob.type},body:blob});if(!r.ok)throw r.status;
