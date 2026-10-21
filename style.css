@@ -50,3 +50,6 @@ h1,h2,p,.card{word-break:keep-all;overflow-wrap:anywhere}
 .prog{color:var(--sub);font-size:13px}
 .check .ans[hidden]{display:none}
 h1 .sub{font-weight:500;font-size:15px!important;letter-spacing:0}
+textarea{font:inherit;width:100%;padding:10px;border:1px solid var(--line);border-radius:8px;background:#fff;resize:vertical}
+@media print{header,.noprint,#pop{display:none!important}body{background:#fff}main{padding:0}.cert{border:2px solid #1f1f1f;margin-top:30mm}}
+details.nb{border:1px solid var(--line);border-radius:10px;padding:8px 12px;margin:12px 0;background:#fff}details.nb summary{cursor:pointer;color:var(--acc);font-size:15px}
