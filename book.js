@@ -51,7 +51,7 @@ function steps(n){var D=CH[n],s=['','words'];D.scenes.forEach(function(x,i){s.pu
 function go(h){location.hash=h}
 function redirect(h){location.replace(location.pathname+location.search+h)}
 window.addEventListener('hashchange',route);
-function route(){st=load();window.scrollTo(0,0);$('#pop').hidden=true;stopAudio();hdr();var h=location.hash.replace(/^#\/?/,'').split('/');
+function route(){st=load();window.scrollTo(0,0);$('#pop').hidden=true;stopAudio();if(offScene)offScene();hdr();var h=location.hash.replace(/^#\/?/,'').split('/');
  if(!st.learner&&['','join','teacher'].indexOf(h[0])<0)return start();
  var R={'':start,join:join,toc:toc,c:function(){chapter(+h[1],h.slice(2).join('/'))},words:wordbook,people:people,notebook:notebook,report:report,teacher:tpin,cert:cert,end:end};
  (R[h[0]]||start)()}
@@ -104,19 +104,34 @@ function chapter(n,step){var D=CH[n];if(!D||!(open(n)||(st.ch[n]&&st.ch[n].done)
  else if(step==='think')think(D,S,n,bar,next);
  else if(step==='reflect')reflect(D,n,bar,next);
  else if(step==='done')done(D,S,n)}
-function scene(D,k,bar,next,after){var sc=D.scenes[k-1],U=[],h=bar+'<h1>Scene '+sc.no+'. '+esc(sc.title)+'</h1>';
- h+='<div class="row"><button id="play">처음부터 듣기</button><label class="chk" style="margin:0"><input type="checkbox" id="slow"'+(st.slow?' checked':'')+'>천천히</label></div><p class="sub" style="margin-top:8px">문장을 누르면 그 부분만 다시 들려요.</p>';
- sc.paras.forEach(function(p,pi){sc.imgs.forEach(function(im){if(im.at===pi)h+='<img class="scene" src="'+esc(im.src)+'" alt="">'});
-  var sp=p.units.map(function(u){U.push(u);return '<span class="s" data-i="'+(U.length-1)+'">'+esc(u.t)+'</span>'}).join(' ');
+// 그림 움직임: 그림마다 아래 문단을 읽어 가는 만큼(듣는 문장 또는 스크롤 위치) 천천히 다가가며 옆으로 흐른다
+var MOVES=[[1.04,1.16,-2.5,2.5,0,-1.5],[1.16,1.04,2.5,-2,-1.5,0],[1.04,1.14,0,0,1.5,-2],[1.06,1.16,2.5,-2.5,0,1]],offScene=null;
+function scene(D,k,bar,next,after){var sc=D.scenes[k-1],U=[],F=[],h=bar+'<h1>Scene '+sc.no+'. '+esc(sc.title)+'</h1>';
+ h+='<div class="row ctl"><button id="play">▶ 처음부터 듣기</button><button id="restart" hidden>처음부터</button><label class="chk" style="margin:0"><input type="checkbox" id="slow"'+(st.slow?' checked':'')+'>천천히</label></div><p class="sub" style="margin-top:8px">문장을 누르면 그 부분만 다시 들려요.</p>';
+ sc.paras.forEach(function(p,pi){sc.imgs.forEach(function(im){if(im.at===pi){F.push({a:U.length,b:U.length,p:-1});h+='<div class="frame"><img class="scene" src="'+esc(im.src)+'" alt="" data-f="'+(F.length-1)+'"></div>'}});
+  var sp=p.units.map(function(u){U.push(u);if(F.length)F[F.length-1].b=U.length-1;return '<span class="s" data-i="'+(U.length-1)+'">'+esc(u.t)+'</span>'}).join(' ');
   h+=p.kind==='sign'?'<div class="sign">'+sp+'</div>':'<p class="en">'+sp+'</p>'});
  h+='<div class="check"><span class="acc">지금 무슨 일이?</span> '+esc(sc.check.q)+'<br><button id="ans">답 보기</button><span class="ans" id="an" hidden>→ '+esc(sc.check.a)+'</span></div>';
  h+='<button class="main" id="b">'+(after==='solve'?'직접 풀어 보기':after&&after.indexOf('s/')===0?'다음 장면':'다 읽었어요')+'</button>';app.innerHTML=h;
  $('#ans').onclick=function(){$('#an').hidden=false;this.hidden=true};
  $('#slow').onchange=function(){st.slow=this.checked;save();audio.playbackRate=st.slow?0.75:1};
- function from(i,one){stopAudio();var u=U[i];if(!u)return;var el=app.querySelector('.s[data-i="'+i+'"]');el.classList.add('on');
+ var hd=document.querySelector('header');if(hd)document.documentElement.style.setProperty('--hh',hd.offsetHeight+'px');
+ var calm=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches,imgs=app.querySelectorAll('img.scene');
+ function pose(f,t){var x=F[f];t=Math.max(0,Math.min(1,t));if(calm||Math.abs(t-x.p)<0.01)return;x.p=t;var m=MOVES[(k+f)%MOVES.length],L=function(a,b){return a+(b-a)*t};
+  imgs[f].style.transform='translate('+L(m[2],m[3]).toFixed(2)+'%,'+L(m[4],m[5]).toFixed(2)+'%) scale('+L(m[0],m[1]).toFixed(3)+')'}
+ function byUnit(i){F.forEach(function(x,f){if(i>=x.a&&i<=x.b)pose(f,(i-x.a+0.5)/(x.b-x.a+1));else if(i>x.b)pose(f,1)})}
+ function byScroll(){if(playing!==null)return;var mid=innerHeight*0.6;F.forEach(function(x,f){var top=imgs[f].parentNode.getBoundingClientRect().top,last=app.querySelector('.s[data-i="'+x.b+'"]'),end=last?last.getBoundingClientRect().bottom:top+1;pose(f,(mid-top)/Math.max(1,end-top))})}
+ var raf=0,onScroll=function(){if(!raf)raf=requestAnimationFrame(function(){raf=0;byScroll()})};
+ if(offScene)offScene();window.addEventListener('scroll',onScroll,{passive:true});offScene=function(){window.removeEventListener('scroll',onScroll);offScene=null};
+ F.forEach(function(x,f){pose(f,0)});byScroll();
+ // 재생 단추: 듣는 중에는 멈추기, 멈춘 뒤에는 이어 듣기(처음부터 단추가 함께 보임)
+ var at=0,btn=$('#play'),rs=$('#restart');
+ function ui(s){btn.textContent=s==='play'?'■ 멈추기':s==='pause'?'▶ 이어 듣기':'▶ 처음부터 듣기';btn.classList.toggle('on',s==='play');rs.hidden=s!=='pause'}
+ function from(i,one){stopAudio();var u=U[i];if(!u){at=0;return ui('idle')}var el=app.querySelector('.s[data-i="'+i+'"]');el.classList.add('on');at=i;byUnit(i);ui('play');
   audio.src=u.src;audio.playbackRate=st.slow?0.75:1;audio.preservesPitch=true;playing=i;
-  audio.onended=function(){el.classList.remove('on');if(!one&&playing===i)from(i+1)};audio.play().catch(function(){})}
- $('#play').onclick=function(){from(0)};
+  audio.onended=function(){el.classList.remove('on');if(playing!==i)return;if(one){playing=null;at=i+1<U.length?i+1:0;ui(at?'pause':'idle')}else from(i+1)};audio.play().catch(function(){playing=null;el.classList.remove('on');ui('idle')})}
+ btn.onclick=function(){if(playing!==null){stopAudio();ui('pause')}else from(at)};
+ rs.onclick=function(){from(0)};
  app.querySelectorAll('.s').forEach(function(e){e.onclick=function(){from(+e.dataset.i,true)}});
  $('#b').onclick=next}
 function solve(D,S,n,bar,next){var V=D.solve,pick=S.solve?S.solve.picks.slice():[];

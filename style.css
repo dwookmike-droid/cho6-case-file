@@ -7,6 +7,9 @@ main{max-width:560px;margin:0 auto;padding:20px 20px 80px}
 h1{font-size:24px;line-height:1.35;margin:8px 0 12px;letter-spacing:-.02em}h2{font-size:17px;margin:32px 0 8px}
 p{margin:0 0 10px}.sub{color:var(--sub);font-size:14px}.acc{color:var(--acc)}
 img.scene{width:100%;display:block;margin:18px 0;border-radius:4px}
+.frame{overflow:hidden;border-radius:4px;margin:18px 0}.frame img.scene{margin:0;transform-origin:50% 50%;transition:transform 1.6s ease-out;will-change:transform}
+.ctl{position:sticky;top:var(--hh,52px);z-index:4;background:var(--paper);padding:8px 0}#play.on{background:#8B3A2B;color:#fff;border-color:#8B3A2B}
+@media (prefers-reduced-motion:reduce){.frame img.scene{transition:none;transform:none!important}}
 button,.btn{font:inherit;border:1px solid var(--ink);background:none;color:var(--ink);padding:11px 18px;border-radius:999px;cursor:pointer}
 button.main{background:var(--ink);color:#fff;width:100%;margin-top:22px}button:disabled{opacity:.35}
 .row{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
